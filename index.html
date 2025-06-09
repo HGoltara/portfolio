@@ -5,35 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Higor Goltara | Desenvolvedor Web</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" onerror="this.onerror=null;this.href='assets/font-awesome/css/all.min.css';">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
+  <header>
+    <button id="toggleTheme" title="Alternar tema">🌓</button>
+  </header>
 
-  <!-- Sobre -->
   <section id="Sobre">
-  <h1>Sobre mim</h1>
-
-  <div class="sobre-conteudo">
-    <div class="texto">
-      <p>Meu nome é Higor, tenho 25 anos e sou desenvolvedor web.</p>
-      <p>Meu contato com tech surgiu desde pequeno, quando recebi meu primeiro computador, que na época rodava Linux. 
-        De lá pra cá, minha paixão só cresceu, e hoje me encontro aqui, trabalhando como webdev.</p>
-      <p>Atualmente, estou estudando JavaScript e React, e tenho interesse em aprender mais sobre desenvolvimento de aplicativos móveis.</p>
-      <p>Quando não estou programando, gosto de jogar videogame, ler livros de ficção científica e explorar novas tecnologias.</p>
-      <p>Estou sempre em busca de novos desafios e oportunidades para crescer como desenvolvedor.</p>
+    <h1 id="typed-title"></h1>
+    <div class="sobre-conteudo">
+      <div class="texto">
+        <p>Meu nome é Higor, tenho 25 anos e sou desenvolvedor web.</p>
+        <p>Meu contato com tech surgiu desde pequeno, quando recebi meu primeiro computador, que na época rodava Linux. 
+          De lá pra cá, minha paixão só cresceu, e hoje me encontro aqui, trabalhando como webdev.</p>
+        <p>Atualmente, estou estudando JavaScript e React, e tenho interesse em aprender mais sobre desenvolvimento de aplicativos móveis.</p>
+        <p>Quando não estou programando, gosto de jogar videogame, ler livros de ficção científica e explorar novas tecnologias.</p>
+        <p>Estou sempre em busca de novos desafios e oportunidades para crescer como desenvolvedor.</p>
+      </div>
+      <div class="imagem">
+        <img src="assets/eu2.jpg" alt="Foto de Higor Goltara">
+      </div>
     </div>
+  </section>
 
-    <div class="imagem">
-      <img src="assets/eu2.jpg" alt="Foto de Higor Goltara" onerror="this.onerror=null; this.src='assets/placeholder.jpg';">
-    </div>
-  </div>
-</section>
-
-  <hr>
-
-  <!-- Contato -->
-  
   <section id="Contato">
     <h2>Contato</h2>
     <p>Você pode me encontrar nas seguintes redes sociais:</p>
@@ -45,13 +41,11 @@
   </section>
 
   <footer>
-    <p>&copy; <span id="currentYear"></span> Higor Goltara. Todos os direitos reservados.</p>
-    <script>
-      document.getElementById('currentYear').textContent = new Date().getFullYear();
-      const tituloSobre = document.querySelector('#Sobre h1');
-      tituloSobre.style.color = '#1abc9c';
-    </script>
+    <p>&copy; 2025 Higor Goltara. Todos os direitos reservados.</p>
   </footer>
 
+  <button id="backToTop" title="Voltar ao topo">↑</button>
+
+  <script src="script.js"></script>
 </body>
 </html>
