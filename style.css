@@ -33,6 +33,10 @@ body {
   transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg,
+    rgba(200, 200, 200, 0.2),
+    rgba(255, 255, 255, 0.1)
+  ) fixed;
 }
 
 body.dark-mode {
@@ -497,4 +501,17 @@ input.focused, textarea.focused {
   color: var(--color-primary-dark);
   transition: color var(--transition-speed) ease;
   user-select: none;
+}
+
+.whatsapp-button {
+    position: fixed;
+    bottom: 39%;
+    right: 7px;
+    z-index: 99999;
+    width: 105px;
+    text-align: center;
+    line-height: 1;
+    animation: scaleUp 1s infinite;
+    background: #139f01;
+    border-radius: 10px;
 }
