@@ -1,36 +1,48 @@
-document.addEventListener('DOMContentLoaded', function () {
-  // Título com digitação animada
-  const title = document.getElementById("typed-title");
-  const text = "Bem-vindo! Eu sou Higor Goltara.";
-  let index = 0;
+// Função para efeito "typed" simples no título #typed-title
+const typedTitle = document.getElementById('typed-title');
+const textToType = "Desenvolvedor Web • Solucionador de problemas • Apaixonado por tecnologia";
+let charIndex = 0;
 
-  function typeWriter() {
-    if (index < text.length) {
-      title.textContent += text.charAt(index);
-      index++;
-      setTimeout(typeWriter, 100);
-    }
+function typeEffect() {
+  if (charIndex < textToType.length) {
+    typedTitle.textContent += textToType.charAt(charIndex);
+    charIndex++;
+    setTimeout(typeEffect, 80);
   }
-  typeWriter();
+}
 
-  // Botão voltar ao topo
-  const backToTop = document.getElementById("backToTop");
+// Alternar tema claro / escuro
+const toggleThemeBtn = document.getElementById('toggleTheme');
+toggleThemeBtn.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
 
-  window.addEventListener("scroll", function () {
-    if (window.scrollY > 300) {
-      backToTop.style.display = "block";
-    } else {
-      backToTop.style.display = "none";
-    }
-  });
+  // Opcional: salvar preferência no localStorage
+  if(document.body.classList.contains('dark-mode')) {
+    localStorage.setItem('theme', 'dark');
+  } else {
+    localStorage.setItem('theme', 'light');
+  }
+});
 
-  backToTop.addEventListener("click", function () {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
+// Carregar tema salvo (se houver)
+window.addEventListener('DOMContentLoaded', () => {
+  if(localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark-mode');
+  }
+  typeEffect();
+});
 
-  // Alternar tema claro/escuro
-  const toggleThemeBtn = document.getElementById("toggleTheme");
-  toggleThemeBtn.addEventListener("click", function () {
-    document.body.classList.toggle("dark-mode");
-  });
+// Botão "Voltar ao topo"
+const backToTopBtn = document.getElementById('backToTop');
+
+window.addEventListener('scroll', () => {
+  if(window.scrollY > 300) {
+    backToTopBtn.style.display = 'block';
+  } else {
+    backToTopBtn.style.display = 'none';
+  }
+});
+
+backToTopBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
