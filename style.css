@@ -34,8 +34,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(135deg,
-    rgba(200, 200, 200, 0.2),
-    rgba(255, 255, 255, 0.1)
+    rgba(17, 17, 17, 0.2),
+    rgba(15, 15, 15, 0.1)
   ) fixed;
 }
 
@@ -56,9 +56,61 @@ body.dark {
   color: var(--text-color);
 }
 
-button,
-a.btn {
-  transition: all 0.3s ease;
+/* Header e navegação */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  position: relative;
+}
+
+.nav-main ul {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-main a {
+  text-decoration: none;
+}
+
+.nav-main a:hover,
+.nav-main a:focus {
+  color: var(--color-primary);
+  transition: color var(--transition-speed) ease;
+}
+
+.hamburger {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Responsivo: aplica a partir de 768px para baixo */
+@media (max-width: 768px) {
+  .nav-main ul {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 1rem;
+    background: #333;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .nav-main ul.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: inline-block;
+  }
 }
 
 /* Seções gerais */
@@ -323,6 +375,10 @@ body.dark-mode #toggleTheme {
   border: 2px solid transparent;
   user-select: none;
 }
+.nav-main ul li a.dark-mode {
+  color: var(--color-text-light);
+  border-color: var(--color-text-light);
+}
 
 .nav-main ul li a:hover,
 .nav-main ul li a.active,
@@ -332,16 +388,16 @@ body.dark-mode #toggleTheme {
   border-color: var(--color-primary-dark);
   outline: none;
 }
-
-body.dark-mode .nav-main ul li a {
-  color: #ddd;
+body.dark .nav-main ul li a {
+  color: var(--color-text-light);
 }
 
-body.dark-mode .nav-main ul li a:hover,
-body.dark-mode .nav-main ul li a.active,
-body.dark-mode .nav-main ul li a:focus {
+body.dark .nav-main ul li a:hover,
+body.dark .nav-main ul li a.active,
+body.dark .nav-main ul li a:focus {
   background-color: var(--color-primary-dark);
   border-color: #13876a;
+  color: #fff;
 }
 
 /* Seção Contato */
@@ -497,6 +553,7 @@ input.focused, textarea.focused {
   transition: color var(--transition-speed) ease;
   user-select: none;
 }
+
 /* Botão do WhatsApp */
 	.whatsapp-button {
 		position: fixed;
@@ -547,3 +604,4 @@ input.focused, textarea.focused {
 		object-fit: contain;
 		width: 24px;
 	}
+

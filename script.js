@@ -1,11 +1,14 @@
+// --- Seletores principais ---
 const body = document.body;
 const toggleThemeBtn = document.getElementById('toggleTheme');
 const backToTopBtn = document.getElementById('backToTop');
 const navLinks = document.querySelectorAll('.nav-main a');
 const sections = document.querySelectorAll('section');
 const contactForm = document.getElementById('contactForm');
+const menuToggle = document.getElementById('menuToggle');
+const navMenu = document.querySelector('.nav-main ul');
 
-// --- Tema (com horário e localStorage) ---
+// --- Tema (com localStorage) ---
 function setTheme(theme) {
   body.className = theme;
   localStorage.setItem("theme", theme);
@@ -17,7 +20,9 @@ function toggleTheme() {
   setTheme(newTheme);
 }
 
-toggleThemeBtn.addEventListener("click", toggleTheme);
+if (toggleThemeBtn) {
+  toggleThemeBtn.addEventListener("click", toggleTheme);
+}
 
 // Aplica o tema salvo (se houver)
 window.addEventListener("DOMContentLoaded", () => {
@@ -78,10 +83,7 @@ window.addEventListener('load', updateActiveMenu);
 
 // --- Animação fade-in ao entrar na viewport ---
 const fadeElems = document.querySelectorAll('.about-container, .imagem, .projects-container, .contato-container');
-
-const observerOptions = {
-  threshold: 0.2,
-};
+const fadeObserverOptions = { threshold: 0.2 };
 
 const fadeObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -90,7 +92,7 @@ const fadeObserver = new IntersectionObserver((entries) => {
       fadeObserver.unobserve(entry.target);
     }
   });
-}, observerOptions);
+}, fadeObserverOptions);
 
 fadeElems.forEach(el => {
   el.classList.add('fade-init'); // inicial invisível
@@ -147,20 +149,14 @@ navLinks.forEach(link => {
   });
 });
 
-// --- Inicialização ---
-loadTheme();
-
+// --- Intersection Observer para fade-in em outros elementos ---
 document.addEventListener("DOMContentLoaded", () => {
-  // Intersection Observer para animar seções e elementos
-  const observerOptions = {
-    threshold: 0.1,
-  };
-
+  const observerOptions = { threshold: 0.1 };
   const fadeElements = document.querySelectorAll('section, .social-icons li, .imagem img, .about-container p strong');
 
   const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
-      if(entry.isIntersecting){
+      if (entry.isIntersecting) {
         entry.target.classList.add('fade-in');
         observer.unobserve(entry.target);
       }
@@ -170,9 +166,16 @@ document.addEventListener("DOMContentLoaded", () => {
   fadeElements.forEach(el => observer.observe(el));
 });
 
-// Estiliza botões desabilitados
+// --- Estiliza botões desabilitados ---
 document.querySelectorAll(".btn.disabled").forEach((btn) => {
   btn.addEventListener("click", (e) => {
     e.preventDefault();
   });
 });
+
+// --- Menu hamburguer responsivo ---
+if (menuToggle && navMenu) {
+  menuToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+  });
+}
